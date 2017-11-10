@@ -1,0 +1,12 @@
+### New: Don't use IPv6 and ignore ICMP/broadcast requests
+
+# Disable IPv6
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1
+
+# Ignore ICMP request:
+net.ipv4.icmp_echo_ignore_all = 1
+
+# Ignore Broadcast request:
+net.ipv4.icmp_echo_ignore_broadcasts = 1

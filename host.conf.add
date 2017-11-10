@@ -1,0 +1,3 @@
+### New: Prevent IP Spoofing
+order bind,hosts
+nospoof on

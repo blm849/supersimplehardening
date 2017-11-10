@@ -1,0 +1,4 @@
+### New: Limit ssh to users in the adm group 
+Allow users 
+AllowGroups adm
+Protocol 2
