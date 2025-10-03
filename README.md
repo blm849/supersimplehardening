@@ -129,14 +129,15 @@ A number of steps here are taken from https://www.redhat.com/en/blog/eight-ways-
 7. Time's up! (i.e. forcing idle users)
 
 ##### After you change the port, you need to do these three commands (assuming you made it port 4222)
- sudo systemctl restart ssh.socket
-sudo systemctl restart ssh.service
-sudo ss -tuln | grep 4222
+
+- sudo systemctl restart ssh.socket
+- sudo systemctl restart ssh.service
+- sudo ss -tuln | grep 4222
 
 ##### Way 8 depends on the version of Ubuntu you have 
 8. Here's the key (i.e. using a key vs password for login)
 
-##### If you have Ubuntu 22 or great, make sure file 
+##### If you have Ubuntu 22 or greater, make sure file 
 /etc/ssh/sshd_config.d/50-cloud-init.conf
 has the following line:
 

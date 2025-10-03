@@ -13,12 +13,17 @@ PermitEmptyPasswords no
 PermitRootLogin no
 
 ### New: Run SSH on a non-standard port. Comment out: Port 22
-#Port 8022
+#Port 4222
 
 ### New: uncomment these if you want to force off idle users faster
 # ClientAliveInterval 60
 # ClientAliveCountMax 3
 
-### New: once you have a key set up, uncomment these two lines:
+### New: once you have a key set up, uncomment these two lines if Ubuntu < 22
 # PasswordAuthentication no
 # PublicKeyAuthentication yes
+
+### For Ubuntu 22 on, you must change this file
+### sudo vi /etc/ssh/sshd_config.d/50-cloud-init.conf
+
+# PasswordAuthentication no
