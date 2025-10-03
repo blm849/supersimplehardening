@@ -1,0 +1,9 @@
+          __        ___    ____  _   _ ___ _   _  ____
+          \ \      / / \  |  _ \| \ | |_ _| \ | |/ ___|
+           \ \ /\ / / _ \ | |_) |  \| || ||  \| | |  _
+            \ V  V / ___ \|  _ <| |\  || || |\  | |_| |
+             \_/\_/_/   \_|_| \_|_| \_|___|_| \_|\____|
+
+Only authorized users of this system are allowed access to this server.
+Unauthorized users should logoff immediately. By accessing this system, you agree that 
+all your actions may be monitored if unauthorized usage is suspected. 

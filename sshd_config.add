@@ -1,5 +1,24 @@
+### New: added a banner
+Banner /etc/issue.net
 
 ### New: Limit ssh to users in the adm group 
 AllowUsers 
 AllowGroups adm
 Protocol 2
+
+### New: Do not allow empty passwords
+PermitEmptyPasswords no
+
+### New: Do not allow root login
+PermitRootLogin no
+
+### New: Run SSH on a non-standard port. Comment out: Port 22
+#Port 8022
+
+### New: uncomment these if you want to force off idle users faster
+# ClientAliveInterval 60
+# ClientAliveCountMax 3
+
+### New: once you have a key set up, uncomment these two lines:
+# PasswordAuthentication no
+# PublicKeyAuthentication yes

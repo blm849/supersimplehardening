@@ -28,17 +28,21 @@ Before you start running the steps, do the following
 
 You are now ready to run the shell scripts step1.sh to step5.sh
 
-
+##### Preliminary activities
+Before running any scripts, replace the file /etc/issue.net with the contents of file __sample_issue_net_banner.txt__.
 
 ##### Step1.sh
 Running this script adds a user that is goint to be part of the sudo and adm groups. This script also lets you set a password. You may want to add more than one userid. When you run this program, pass the name of the new user as a parameter. 
 
 *	E.g., enter: ./step1.sh newuser
 
-You will be prompted for a password for the new user, newuser
+You will be prompted for a password for the new user, __newuser__
 
-Once step1.sh runs successful, you can now log in to the system with the userid newuser. Do this now.
+Once step1.sh runs successful, you can now log in to the system with the userid newuser. 
 
+Consider adding a secondary user if you will have more than one user (e.g. a backup user)
+
+*Do this now* before you run the next steps.
 
 ##### Step2.sh
 Running this script backs up files that will be changed in step 3. The backed up files will have a name of backup.yyyymmdd_hhmmss.filename
@@ -48,6 +52,9 @@ __sshd_config.add__. There is a line in this file that starts with the word _All
 
 *	E.g., if you added two users, newuser1 and newuser2, then the line should read: 
 	* AllowUsers newuser1 newuser2
+	
+Check out __sshd_config.add__ for any other changes you want to do. If you are not sure
+do __NOT__ uncomment a line.
 
 ##### Step3.sh
 Running this script will change files to make the server more secure. It changes the following files:
@@ -83,21 +90,43 @@ After the script adds those tool, it runs an update on all packages.
 
 ## Finally
 
-After running all of these steps, restart sshd to prevent ssh login as root. But before you do, login to your server with root and at least one other new user that you create. Ok, now to restart sshd, enter:
+After running all of these steps, restart sshd to prevent ssh login as root. But before you do, login to your server with root and at least one other new user that you create. 
+
+*Before you restart the sshd, check the file one more time.*
+Enter: sudo vi /etc/ssh/sshd_config
+
+Ok, now to restart sshd, enter:
 
 *	service ssh restart
 
-Now try and ssh to the server and login as root. You should be unsuccessful. However you should be able to ssh into the server as the newuser and then you should be able to use sudo to run the commands you need.
+or
 
+* systemctl restart sshd (if you have a Red Hat or other server)
+
+Now try and ssh to the server and login as root. You should be unsuccessful. However you should be able to ssh into the server as the newuser and then you should be able to use sudo to run the commands you need.
 
 If you want to run a logwatch report to see what kind of attacks that people or machines are trying to run against your Ubuntu server, enter: 
 
 * 	logwatch 
 
-## One last note
+## One last note!
 
 This approach has worked for me. It's far from the last word on Ubuntu server security, but it will help. If you have better approaches to securing your servers, stick with what you think is best.
 
+## P.S. 
+A number of steps here are taken from https://www.redhat.com/en/blog/eight-ways-secure-ssh
+
+Ways 1-5 of the 8 ways are part of this process:
+1. Backup the config file
+2. Set a banner message
+3. Prevent empty passwords
+4. Prevent the root user from crossing the network via SSH
+5. Whitelist specific user accounts
+
+Way 5-8 need manual effort:
+6. No more port 22
+7. Time's up! (i.e. forcing idle users)
+8. Here's the key (i.e. using a key vs password for login)
 
 
 
