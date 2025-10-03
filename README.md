@@ -116,17 +116,31 @@ This approach has worked for me. It's far from the last word on Ubuntu server se
 ## P.S. 
 A number of steps here are taken from https://www.redhat.com/en/blog/eight-ways-secure-ssh
 
-Ways 1-5 of the 8 ways are part of this process:
+##### Ways 1-5 of the 8 ways are part of this process:
 1. Backup the config file
 2. Set a banner message
 3. Prevent empty passwords
 4. Prevent the root user from crossing the network via SSH
 5. Whitelist specific user accounts
 
-Way 5-8 need manual effort:
+##### Ways 5-7 need manual effort.
+
 6. No more port 22
 7. Time's up! (i.e. forcing idle users)
+
+##### After you change the port, you need to do these three commands (assuming you made it port 4222)
+ sudo systemctl restart ssh.socket
+sudo systemctl restart ssh.service
+sudo ss -tuln | grep 4222
+
+##### Way 8 depends on the version of Ubuntu you have 
 8. Here's the key (i.e. using a key vs password for login)
+
+##### If you have Ubuntu 22 or great, make sure file 
+/etc/ssh/sshd_config.d/50-cloud-init.conf
+has the following line:
+
+PasswordAuthentication no
 
 
 
